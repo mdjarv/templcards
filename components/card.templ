@@ -1,0 +1,29 @@
+package components
+
+import (
+  "fmt"
+  "github.com/mdjarv/templcards/pkg/models"
+)
+
+templ cardFace(content []string, className string) {
+  <div class={
+    "rounded shadow-xl flex flex-col w-full h-full text-center justify-center items-center font-bold overflow-y-auto",
+    className,
+  }>
+    for _, row := range content {
+      <p>{row}</p>
+    }
+    <div class="absolute top-2 right-2 join">
+      <button class="btn btn-sm join-item">Remove</button>
+    </div>
+  </div>
+}
+
+templ Card(card models.Card) {
+  <div id={ "card-" + card.ID } class="flip-card w-64 h-48" hx-on={ fmt.Sprintf("click: flipCard('#card-%s')", card.ID) }>
+    <div tabindex="0" class="flip-card-inner">
+      @cardFace(card.Front, "flip-card-front bg-primary text-primary-content")
+      @cardFace(card.Back, "flip-card-back bg-secondary text-secondary-content")
+    </div>
+  </div>
+}

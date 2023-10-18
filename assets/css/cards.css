@@ -1,0 +1,79 @@
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+  /* background-color: transparent; */
+  /* width: 300px; */
+  /* height: 200px; */
+  /* border: 1px solid #f1f1f1; */
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* text-align: center; */
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+/* .flip-card:active .flip-card-inner { */
+/*   transform: rotateY(180deg); */
+/* } */
+
+.flip-card-reveal {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* overflow-y: auto; */
+  /* overflow-x: hidden; */
+
+  /* box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); */
+  cursor: pointer;
+}
+
+.flip-card-front::after, .flip-card-back::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* width: 100%; */
+  /* height: 100%; */
+  background-color: white;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+  
+  /* prevent mouse interaction */
+  pointer-events: none;
+}
+
+.flip-card-front:hover::after, .flip-card-back:hover::after {
+  opacity: 0.2;
+}
+
+/* Style the front side (fallback if image is missing) */
+/* .flip-card-front { */
+/*   background-color: #fde047; */
+/* } */
+
+/* Style the back side */
+.flip-card-back {
+  /* background-color: #fb923c; */
+  transform: rotateY(180deg);
+}
+

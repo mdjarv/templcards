@@ -1,0 +1,23 @@
+package components
+
+templ layout() {
+  <html data-theme="dracula">
+    <head>
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.2/dist/full.css" rel="stylesheet" type="text/css" />
+      <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+      <script src="https://unpkg.com/htmx.org@1.9.6" integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni" crossorigin="anonymous"></script>
+      <script src="https://unpkg.com/htmx.org/dist/ext/class-tools.js"></script>
+      <link href="/assets/css/cards.css" rel="stylesheet" type="text/css" />
+      <script language="javascript">
+
+        function flipCard(cardId) {
+          htmx.toggleClass(htmx.find(cardId + " .flip-card-inner"), "flip-card-reveal");
+        }
+
+      </script>
+    </head>
+    <body class="p-4">
+      { children... }
+    </body>
+  </html>
+}

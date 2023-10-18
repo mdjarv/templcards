@@ -1,0 +1,11 @@
+package components
+
+templ cardForm() {
+  <form class="flex flex-col gap-4" hx-post="/cards" hx-target="#cards-list" hx-swap="beforeend">
+    <textarea class="textarea textarea-primary" name="front" placeholder="Front" />
+    <textarea class="textarea textarea-primary" name="back" placeholder="Back" />
+    <div>
+      <button type="submit" class="btn">Add</button>
+    </div>
+  </form>
+}

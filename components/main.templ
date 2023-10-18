@@ -1,0 +1,19 @@
+package components
+
+import (
+  "github.com/mdjarv/templcards/pkg/models"
+)
+
+templ Main(cards []models.Card) {
+  @layout() {
+    <div>
+    <h1 class="text-2xl">Cards</h1>
+    <ul id="cards-list" class="flex flex-wrap gap-4 py-4">
+    for _, card := range cards {
+      <li>@Card(card)</li>
+    }
+    </ul>
+    @cardForm()
+    </div>
+  }
+}
