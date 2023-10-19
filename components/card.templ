@@ -13,17 +13,29 @@ templ cardFace(content []string, className string) {
     for _, row := range content {
       <p>{row}</p>
     }
-    <div class="absolute top-2 right-2 join">
-      <button class="btn btn-sm join-item">Remove</button>
-    </div>
   </div>
 }
 
 templ Card(card models.Card) {
-  <div id={ "card-" + card.ID } class="flip-card w-64 h-48" hx-on={ fmt.Sprintf("click: flipCard('#card-%s')", card.ID) }>
-    <div tabindex="0" class="flip-card-inner">
-      @cardFace(card.Front, "flip-card-front bg-primary text-primary-content")
-      @cardFace(card.Back, "flip-card-back bg-secondary text-secondary-content")
+  <div class="card flex flex-col gap-4 shadow-xl bg-base-200 p-4">
+    <div class="card-content">
+      <div id={ "card-" + card.ID } class="flip-card w-64 h-48" hx-on={ fmt.Sprintf("click: flipCard('#card-%s')", card.ID) }>
+        <div tabindex="0" class="flip-card-inner">
+          @cardFace(card.Front, "flip-card-front bg-primary text-primary-content")
+          @cardFace(card.Back, "flip-card-back bg-secondary text-secondary-content")
+        </div>
+      </div>
+    </div>
+    <div class="card-actions justify-end">
+      <div tabindex="0" class="collapse collapse-plus">
+        <div class="collapse-title">
+          Actions
+        </div>
+        <div class="collapse-content">
+          <button class="btn btn-secondary btn-sm btn-info">Edit</button>
+          <button class="btn btn-secondary btn-sm btn-error">Remove</button>
+        </div>
+      </div>
     </div>
   </div>
 }
